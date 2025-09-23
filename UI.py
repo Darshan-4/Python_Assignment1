@@ -1,22 +1,38 @@
 import streamlit as st
+import plotly.express as px
 
-# Streamlit UI setup
-st.title("🔢 Square Numbers App")
-st.write("Enter a list of numbers separated by commas, and we'll square each one for you!")
+# Sidebar
+st.sidebar.title("Navigation")
+view = st.sidebar.radio(
+    "Select View",
+    ("Tabular View", "Dashboard View (default one)"),
+    index=1
+)
 
-# Input from user
-user_input = st.text_input("Enter numbers (comma-separated):", "1,2,3,4,5,6,7")
+# Main area
+st.title("Dashboard")
 
-# Process input and display results
-if user_input:
-    try:
-        # Convert input string to list of integers
-        num_list = [int(x.strip()) for x in user_input.split(",")]
-        squared_list = [i * i for i in num_list]
+# Tabs at the top
+tab1, tab2, tab3 = st.tabs(["previous dashboard", "current dashboard", "compare with the previous one"])
 
-        # Display results
-        st.subheader("✅ Squared Results")
-        for original, squared in zip(num_list, squared_list):
-            st.write(f"{original}² = {squared}")
-    except ValueError:
-        st.error("Please enter valid integers separated by commas.")
+with tab1:
+    st.write("This is the previous dashboard view.")
+
+with tab2:
+    st.write("This is the current dashboard view.")
+
+with tab3:
+    st.write("This is the comparison with the previous dashboard.")
+
+# Horizontal filter section
+st.markdown("---")
+st.markdown("### Filters")
+st.markdown("---")
+
+# Placeholder pie chart
+pie_data = {
+    "Category": ["A", "B", "C", "D"],
+    "Value": [30, 20, 25, 25]
+}
+fig = px.pie(pie_data, names="Category", values="Value", title="Sample Pie Chart")
+st.plotly_chart(fig, use_container_width=True)
