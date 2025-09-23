@@ -18,16 +18,20 @@ st.markdown("""
         }
         .nav-tabs {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 1rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-        .nav-tabs button {
+        .nav-tabs a {
             background-color: #f0f2f6;
-            border: none;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            cursor: pointer;
+            text-decoration: none;
             font-weight: bold;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+        .nav-tabs a:hover {
+            background-color: #d0d4da;
         }
         .filters-section {
             background-color: #f9f9f9;
@@ -55,9 +59,9 @@ st.markdown("""
 # --- Navigation Tabs ---
 st.markdown("""
     <div class="nav-tabs">
-        <button>Previous Dashboard</button>
-        <button>Current Dashboard</button>
-        <button>Compare with Previous One</button>
+        #Previous Dashboard</a>
+        #Current Dashboard</a>
+        #Compare with Previous One</a>
     </div>
 """, unsafe_allow_html=True)
 
