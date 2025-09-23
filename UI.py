@@ -52,7 +52,7 @@ with sidebar:
     st.markdown("""
         <div class="sidebar-custom">
             <div style="font-size: 1.5rem;">☰</div>
-            <div class="nav-link">Dashboard View (default one)</div>
+            <div class="nav-link">Dashboard View</div>
             <div class="nav-link">Tabular View</div>
         </div>
     """, unsafe_allow_html=True)
@@ -79,3 +79,4 @@ with main:
 
     # Placeholder for backend dashboard
     st.info("📌 Space for dashboard that will come from backend.")
+
