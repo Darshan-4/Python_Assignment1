@@ -35,12 +35,12 @@ st.markdown("""
             border-radius: 0.5rem;
             margin-bottom: 2rem;
         }
-        .view-options {
-            position: absolute;
-            left: 1rem;
-            top: 6rem;
+        .view-options-box {
+            background-color: #f1f3f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
             font-size: 0.9rem;
-            color: #555;
+            color: #333;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -61,16 +61,20 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# --- View Options (left side) ---
-st.markdown("""
-    <div class="view-options">
-        ➤ Tabular View<br>
-        ➤ Dashboard View (default one)
-    </div>
-""", unsafe_allow_html=True)
+# --- Layout with View Options on the Left ---
+left_col, right_col = st.columns([1, 4])
 
-# --- Filters Section ---
-with st.container():
+with left_col:
+    st.markdown("""
+        <div class="view-options-box">
+            <strong>View Options</strong><br><br>
+            ➤ Tabular View<br>
+            ➤ Dashboard View (default one)
+        </div>
+    """, unsafe_allow_html=True)
+
+with right_col:
+    # --- Filters Section ---
     st.markdown("### 🔍 Filters")
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -80,5 +84,5 @@ with st.container():
     with col3:
         st.date_input("End Date")
 
-# --- Placeholder for Graph or Backend Output ---
-st.info("📌 Graph or data visualization will be rendered here by backend processing.")
+    # --- Placeholder for Graph or Backend Output ---
+    st.info("📌 Graph or data visualization will be rendered here by backend processing.")
